@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { navItems } from "@/components/data";
 import dynamic from "next/dynamic";
