@@ -1,28 +1,7 @@
-<<<<<<< HEAD
-import DynamicSections from '@/components/DynamicSections';
-=======
-import { navItems } from "@/components/data";
-import dynamic from "next/dynamic";
+// app/page.tsx
 
-const FloatingNav = dynamic(() => import("@/components/ui/floating-navbar").then(mod => mod.FloatingNav), { ssr: false });
-const Hero = dynamic(() => import("../components/Hero").then(mod => mod.default), { ssr: false });
-const Grid = dynamic(() => import("@/components/Grid").then(mod => mod.default), { ssr: false });
-const Testimonials = dynamic(() => import("@/components/Proj").then(mod => mod.default), { ssr: false });
->>>>>>> 743753f4b706a17fea1b774abd8a79bf5fce658b
+import HomePageClient from "@/components/Home";
 
-export default function Home() {
-  return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-      <div className="max-w-7xl w-full">
-<<<<<<< HEAD
-        <DynamicSections />
-=======
-        <FloatingNav navItems={navItems} />
-        <Hero />
-        <Grid />
-        <Testimonials />
->>>>>>> 743753f4b706a17fea1b774abd8a79bf5fce658b
-      </div>
-    </main>
-  );
+export default function HomePage() {
+  return <HomePageClient />;
 }

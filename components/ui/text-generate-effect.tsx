@@ -15,7 +15,7 @@ export const TextGenerateEffect = ({
   duration?: number;
 }) => {
   const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
+  const wordsArray = words.split(" ");
   useEffect(() => {
     animate(
       "span",
@@ -35,10 +35,8 @@ export const TextGenerateEffect = ({
       <motion.div ref={scope}>
         {wordsArray.map((word, idx) => {
           let textClass = "dark:text-white text-black"; // Default text color
-          if (word.toLowerCase() === "action") {
-            textClass = "text-purple-700"; // Make "Action" purple
-          } else if (idx > 3) {
-            textClass = "text-purple-700"; // Words with index > 3 are purple
+          if (word.toLowerCase() === "action" || idx > 3) {
+            textClass = "text-purple-700"; // Make "Action" or words with index > 3 purple
           }
 
           return (
