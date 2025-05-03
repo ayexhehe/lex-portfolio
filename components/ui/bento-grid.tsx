@@ -34,8 +34,6 @@ export const BentoGridItem = ({
   className,
   title,
   description,
-  header,
-  icon,
   id,
   img,
   imgclassName,
@@ -44,8 +42,6 @@ export const BentoGridItem = ({
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
-  header?: React.ReactNode;
-  icon?: React.ReactNode;
   id:number;
   img?: string;
     imgclassName?: string;
@@ -164,7 +160,6 @@ export const BentoGridItem = ({
           title={copied ? 'Resume Downloaded' : 'Resume'}
           icon={<IoDownloadOutline />}
           position ="left"
-          otherClasses = "!bg=[#161a31]"
           handleClick={handleCopy}
           
           />

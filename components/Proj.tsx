@@ -51,7 +51,7 @@ const Testimonials = () => {
           </div>
 
           <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] mt-20">
-            <AnimatedTestimonials testimonials={testimonials} autoplay />
+            <AnimatedTestimonials testimonials={testimonials} />
           </div>
         </div>
       </section>
@@ -62,13 +62,13 @@ const Testimonials = () => {
           <h1 className="relative lg:-top-40  lg:text-[80px] text-[40px] md:text-4xl lg:text-5xl">
           <b id="contacts" className="scroll mt-10 " >Reach out and let&apos;s build <span className="text-purple-700">something</span> great</b>
             </h1>
-            <p className=" relative py-5 text-white-200 text-lg"> I'm here to help in any way I can.</p>
+            <p className=" relative py-5 text-white-200 text-lg"> I&apos;m here to help in any way I can.</p>
             <a className=" " href="mailto:alexhuntme123@gmail.com">
               <MagicButton
-                title="Let's Connect"
-                icon={<FaLocationArrow />}
-                position="right"
-                handleClick={() => window.location.href = "mailto:alexhuntme123@gmail.com"}
+              title="Connect"
+              icon={<FaLocationArrow />}
+              position="right"
+              handleClick={() => window.location.href = "mailto:alexhuntme123@gmail.com"}
               />
             </a>
         </div>

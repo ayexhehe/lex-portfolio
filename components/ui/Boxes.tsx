@@ -10,7 +10,7 @@ export function BackgroundBoxes() {
 
       <Boxes />
       <h1 className={cn("md:text-4xl py-2 text-xl text-white relative z-20")}>
-        <b>"Dream. Believe. Achieve."</b>
+        <b>&quot;Dream. Believe. Achieve.&quot;</b>
       </h1>
       <p className="text-center mt-2 px-10 lg:px-20  text-neutral-300 relative z-20">
       An individual with a strong passion for contributing to the digital world. eager to learn, adaptable to training and dedicated to providing high-quality performance and output, aiming for professional development and continuous skill enhancement.

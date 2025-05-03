@@ -71,7 +71,6 @@ export const BackgroundBeamsWithCollision = ({
       ref={parentRef}
       className={cn(
         "min-h-screen bg-gradient-to-b from-white to-neutral-100 bg-black-100 relative flex items-center w-full justify-center overflow-hidden",
-        // h-screen if you want bigger
         className
       )}
     >
@@ -114,7 +113,7 @@ const CollisionMechanism = React.forwardRef<
       repeatDelay?: number;
     };
   }
->(({ parentRef, containerRef, beamOptions = {} }, ref) => {
+>(({ parentRef, containerRef, beamOptions = {} }, _ref) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
     detected: boolean;
@@ -141,7 +140,7 @@ const CollisionMechanism = React.forwardRef<
         if (beamRect.bottom >= containerRect.top) {
           const relativeX =
             beamRect.left - parentRect.left + beamRect.width / 2;
-          const relativeY = beamRect.bottom - parentRect.top;
+          const relativeY = beamRect.bottom - parentRef.current.getBoundingClientRect().top;
 
           setCollision({
             detected: true,
@@ -156,7 +155,6 @@ const CollisionMechanism = React.forwardRef<
     };
 
     const animationInterval = setInterval(checkCollision, 50);
-
     return () => clearInterval(animationInterval);
   }, [cycleCollisionDetected, containerRef]);
 
@@ -208,7 +206,6 @@ const CollisionMechanism = React.forwardRef<
         {collision.detected && collision.coordinates && (
           <Explosion
             key={`${collision.coordinates.x}-${collision.coordinates.y}`}
-            className=""
             style={{
               left: `${collision.coordinates.x}px`,
               top: `${collision.coordinates.y}px`,
@@ -224,13 +221,28 @@ const CollisionMechanism = React.forwardRef<
 CollisionMechanism.displayName = "CollisionMechanism";
 
 const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
-  const spans = Array.from({ length: 20 }, (_, index) => ({
+  const [spans, setSpans] = useState<
+  {
+    id: number;
+    initialX: number;
+    initialY: number;
+    directionX: number;
+    directionY: number;
+    duration: number;
+  }[]
+>([]);
+
+useEffect(() => {
+  const generatedSpans = Array.from({ length: 20 }, (_, index) => ({
     id: index,
     initialX: 0,
     initialY: 0,
     directionX: Math.floor(Math.random() * 80 - 40),
     directionY: Math.floor(Math.random() * -50 - 10),
+    duration: Math.random() * 1.5 + 0.5,
   }));
+  setSpans(generatedSpans);
+}, []);
 
   return (
     <div {...props} className={cn("absolute z-50 h-2 w-2", props.className)}>
@@ -250,7 +262,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
             y: span.directionY,
             opacity: 0,
           }}
-          transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
+          transition={{ duration: span.duration, ease: "easeOut" }}
           className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500"
         />
       ))}

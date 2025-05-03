@@ -13,10 +13,8 @@ type Testimonial = {
 
 export const AnimatedTestimonials = ({
   testimonials,
-  autoplay = false,
 }: {
   testimonials: Testimonial[];
-  autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
 
