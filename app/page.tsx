@@ -2,7 +2,11 @@ import { FloatingNav } from "@/components/ui/floating-navbar";
 import Hero from "../components/Hero";
 import Grid from "@/components/Grid";
 import { navItems } from "@/components/data";
-import Testimonials from "@/components/Proj";
+import dynamic from "next/dynamic";
+
+const Testimonials = dynamic(() => import("@/components/Proj"), {
+  ssr: false,
+});
 
 
 
