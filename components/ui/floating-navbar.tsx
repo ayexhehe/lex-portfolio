@@ -13,12 +13,12 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false); // Start as hidden
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check the scroll position
-      if (window.scrollY > 50) {
+      // Show the floating nav only after the user starts scrolling
+      if (window.scrollY > 0) {
         setVisible(true); // Show when scrolled down
       } else {
         setVisible(false); // Hide when at the top
